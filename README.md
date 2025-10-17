@@ -9,3 +9,4 @@ This repository contains the deliverables of the project:
 3. [acip.js](acip.js): JavaScript port of the previous file, integrated into the open source library [jsewts](https://github.com/buda-base/jsewts), see [online demo](https://buda-base.github.io/jsewts/)
 4. [import_cat.py](import_cat.py): Python file used by BDRC to import the ACIP catalog in the BDRC database
 5. [convert.py](convert.py): Python file used by BDRC to convert the ACIP files into BDRC's etext archival format (TEI/XML)
+6. [osmapping.json](osmapping.json): OpenSearch / ElasticSearch mapping file used by BDRC

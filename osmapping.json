@@ -1,0 +1,429 @@
+{
+  "mappings": {
+    "properties": {
+      "join_field": {
+        "type": "join",
+        "relations": {
+          "instance": "etext"
+        }
+      },
+      "merged": { "type": "keyword", "normalizer": "id_normalizer" },
+      "associated_res": { "type": "keyword" },
+      "creation_date": {"type": "date", "doc_values": true, "ignore_malformed": true },
+      "birthDate": {"type": "date", "doc_values": true, "ignore_malformed": true },
+      "deathDate": {"type": "date", "doc_values": true, "ignore_malformed": true },
+      "flourishedDate": {"type": "date", "doc_values": true, "ignore_malformed": true },
+      "gis_coord": { "type": "geo_point", "ignore_malformed": true },
+      "graphs":  { "type": "keyword"  },
+      "other_id":  { "type": "keyword", "normalizer": "id_normalizer" },
+      "etext_vol": { "type": "keyword" },
+      "ocfl_version": { "type": "keyword" },
+      "source_path": { "type": "keyword" },
+      "etext_imagegroup": { "type": "keyword" },
+      "volumeNumber": { "type": "short" },
+      "etextNumber": { "type": "short" },
+      "etext_for_instance": { "type": "keyword" },
+      "etext_for_root_instance": { "type": "keyword" },
+      "etext_pagination_in": { "type": "keyword" },
+      "publicationDate": {"type": "date", "format" : "date_optional_time", "doc_values": true, "ignore_malformed": true },
+      "firstScanSyncDate": {"type": "date", "format" : "date_optional_time", "doc_values": true, "ignore_malformed": true },
+      "firstEtextSyncDate": {"type": "date", "format" : "date_optional_time", "doc_values": true, "ignore_malformed": true },
+      "db_score": { "type": "half_float" },
+      "db_score_in_type": { "type": "half_float" },
+      "pop_score": { "type": "half_float" },
+      "pop_score_in_type": { "type": "half_float" },
+      "root_pop_score": { "type": "half_float" },
+      "root_pop_score_in_type": { "type": "half_float" },
+      "etext_instance_pop_score": { "type": "half_float" },
+      "etext_instance": { "type": "keyword" },
+      "pop_score_rk": { "type": "rank_feature" },
+      "inRootInstance":   { "type": "keyword" },
+      "type":   { "type": "keyword" },
+      "inCollection":   { "type": "keyword" },
+      "placeLocatedIn":   { "type": "keyword" },
+      "placeType":   { "type": "keyword" },
+      "associatedTradition":   { "type": "keyword" },
+      "associatedCentury":   { "type": "byte" },
+      "personGender":   { "type": "keyword" },
+      "hasSourcePrintery": { "type": "keyword" },
+      "contentMethod": { "type": "keyword" },
+      "printMethod": { "type": "keyword" },
+      "script": { "type": "keyword" },
+      "language": { "type": "keyword" },
+      "ric":   { "type": "boolean" },
+      "partOf":   { "type": "keyword" },
+      "partType":   { "type": "keyword" },
+      "scans_access": { "type": "half_float" },
+      "scans_quality": { "type": "half_float" },
+      "scans_freshness": { "type": "half_float" },
+      "etext_access": { "type": "half_float" },
+      "etext_quality": { "type": "half_float" },
+      "etext_freshness": { "type": "half_float" },
+      "issueName": { "type": "keyword" },
+      "workGenre": { "type": "keyword" },
+      "workIsAbout": { "type": "keyword" },
+      "author": { "type": "keyword" },
+      "cstart": { "type": "integer" },
+      "cend": { "type": "integer" },
+      "authorName_bo_x_ewts": { 
+        "type": "text", 
+        "analyzer": "tibetan-ewts-lenient", 
+        "index_options": "offsets",
+        "fields": {
+          "ewts-phonetic": {
+            "type": "text",
+            "analyzer": "ewts-phonetic",
+            "index_options": "offsets"
+          },
+          "english-phonetic": {
+            "type": "text",
+            "analyzer": "ewts-for-english-phonetic",
+            "search_analyzer": "tibetan-english-phonetic",
+            "index_options": "offsets"
+          },
+          "exact": {
+            "type": "text",
+            "analyzer": "tibetan-ewts-exact",
+            "index_options": "offsets"
+          }
+        }
+      },
+      "authorName_en": { "type": "text", "analyzer": "english-lenient" , "index_options": "offsets" },
+      "authorName_iast": { "type": "text", "analyzer": "iast-lenient" , "index_options": "offsets" },
+      "authorName_mymr": { "type": "text", "analyzer": "mymr-lenient" , "index_options": "offsets" },
+      "authorName_hani": { "type": "text", "analyzer": "tsconvert" , "index_options": "offsets" },
+      "translator": { "type": "keyword" },
+      "complete": { "type": "boolean" },
+      "extent": { "type": "keyword" },
+      "seriesName_res":  {"type": "keyword" },
+      "seriesName_bo_x_ewts": { "type": "text", "analyzer": "tibetan-ewts-lenient" , "index_options": "offsets" },
+      "seriesName_en": { "type": "text", "analyzer": "english-lenient" , "index_options": "offsets" },
+      "summary_bo_x_ewts": { "type": "text", "analyzer": "tibetan-ewts-lenient" , "index_options": "offsets" },
+      "summary_en": { "type": "text", "analyzer": "english-lenient" , "index_options": "offsets" },
+      "summary_hani": { "type": "text", "analyzer": "tsconvert" , "index_options": "offsets" },
+      "authorshipStatement_bo_x_ewts": { 
+        "type": "text", 
+        "analyzer": "tibetan-ewts-lenient", 
+        "index_options": "offsets",
+        "fields": {
+          "ewts-phonetic": {
+            "type": "text",
+            "analyzer": "ewts-phonetic",
+            "index_options": "offsets"
+          },
+          "english-phonetic": {
+            "type": "text",
+            "analyzer": "ewts-for-english-phonetic",
+            "search_analyzer": "tibetan-english-phonetic",
+            "index_options": "offsets"
+          },
+          "exact": {
+            "type": "text",
+            "analyzer": "tibetan-ewts-exact",
+            "index_options": "offsets"
+          }
+        }
+      },
+      "authorshipStatement_en": { "type": "text", "analyzer": "english-lenient" , "index_options": "offsets" },
+      "authorshipStatement_iast": { "type": "text", "analyzer": "iast-lenient" , "index_options": "offsets" },
+      "authorshipStatement_mymr": { "type": "text", "analyzer": "mymr-lenient" , "index_options": "offsets" },
+      "authorshipStatement_hani": { "type": "text", "analyzer": "tsconvert" , "index_options": "offsets" },
+      "publisherName_bo_x_ewts": { "type": "text", "analyzer": "tibetan-ewts-lenient" , "index_options": "offsets" },
+      "publisherLocation_bo_x_ewts": { "type": "text", "analyzer": "tibetan-ewts-lenient" , "index_options": "offsets" },
+      "publisherName_en": { "type": "text", "analyzer": "english-lenient" , "index_options": "offsets" },
+      "publisherLocation_en": { "type": "text", "analyzer": "english-lenient" , "index_options": "offsets" },
+      "publisherName_hani": { "type": "text", "analyzer": "tsconvert" , "index_options": "offsets" },
+      "publisherLocation_hani": { "type": "text", "analyzer": "tsconvert" , "index_options": "offsets" },
+      "prefLabel_hani": { "type": "text", "analyzer": "tsconvert" , "index_options": "offsets" },
+      "prefLabel_mymr": { "type": "text", "analyzer": "mymr-lenient" , "index_options": "offsets" },
+      "prefLabel_khmr": { "type": "text", "analyzer": "khmr-lenient" , "index_options": "offsets" },
+      "prefLabel_iast": { "type": "text", "analyzer": "iast-lenient" , "index_options": "offsets" },
+      "prefLabel_bo_x_ewts": { 
+        "type": "text", 
+        "analyzer": "tibetan-ewts-lenient", 
+        "index_options": "offsets",
+        "fields": {
+          "ewts-phonetic": {
+            "type": "text",
+            "analyzer": "ewts-phonetic",
+            "index_options": "offsets"
+          },
+          "english-phonetic": {
+            "type": "text",
+            "analyzer": "ewts-for-english-phonetic",
+            "search_analyzer": "tibetan-english-phonetic",
+            "index_options": "offsets"
+          },
+          "exact": {
+            "type": "text",
+            "analyzer": "tibetan-ewts-exact",
+            "index_options": "offsets"
+          }
+        }
+      },
+      "prefLabel_en": { "type": "text", "analyzer": "english-lenient" , "index_options": "offsets" },
+      "prefLabel_prePhon": { "type": "text", "index_options": "offsets" },
+      "etext_authorshipStatement_bo_x_ewts": { "type": "text", "analyzer": "tibetan-ewts-lenient" , "index_options": "offsets" },
+      "etext_authorshipStatement_en": { "type": "text", "analyzer": "english-lenient" , "index_options": "offsets" },
+      "etext_publisherName_bo_x_ewts": { "type": "text", "analyzer": "tibetan-ewts-lenient" , "index_options": "offsets" },
+      "etext_publisherLocation_bo_x_ewts": { "type": "text", "analyzer": "tibetan-ewts-lenient" , "index_options": "offsets" },
+      "etext_publisherName_en": { "type": "text", "analyzer": "english-lenient" , "index_options": "offsets" },
+      "etext_publisherLocation_en": { "type": "text", "analyzer": "english-lenient" , "index_options": "offsets" },
+      "etext_prefLabel_bo_x_ewts": { "type": "text", "analyzer": "tibetan-ewts-lenient" , "index_options": "offsets" },
+      "etext_prefLabel_en": { "type": "text", "analyzer": "english-lenient" , "index_options": "offsets" },
+      "comment_bo_x_ewts": { "type": "text", "analyzer": "tibetan-ewts-lenient" , "index_options": "offsets" },
+      "comment_en": { "type": "text", "analyzer": "english-lenient" , "index_options": "offsets" },
+      "comment_hani": { "type": "text", "analyzer": "tsconvert" , "index_options": "offsets" },
+      "altLabel_hani": { "type": "text", "analyzer": "tsconvert" , "index_options": "offsets" },
+      "altLabel_iast": { "type": "text", "analyzer": "iast-lenient" , "index_options": "offsets" },
+      "altLabel_mymr": { "type": "text", "analyzer": "mymr-lenient" , "index_options": "offsets" },
+      "altLabel_khmr": { "type": "text", "analyzer": "khmr-lenient" , "index_options": "offsets" },
+      "altLabel_bo_x_ewts": { 
+        "type": "text", 
+        "analyzer": "tibetan-ewts-lenient", 
+        "index_options": "offsets",
+        "fields": {
+          "ewts-phonetic": {
+            "type": "text",
+            "analyzer": "ewts-phonetic",
+            "index_options": "offsets"
+          },
+          "english-phonetic": {
+            "type": "text",
+            "analyzer": "ewts-for-english-phonetic",
+            "search_analyzer": "tibetan-english-phonetic",
+            "index_options": "offsets"
+          },
+          "exact": {
+            "type": "text",
+            "analyzer": "tibetan-ewts-exact",
+            "index_options": "offsets"
+          }
+        }
+      },
+      "altLabel_en": { "type": "text", "analyzer": "english-lenient" , "index_options": "offsets" },
+      "chunks": {
+        "type": "nested",
+        "properties": {
+          "cstart": { "type": "integer" },
+          "cend": { "type": "integer" },
+          "text_en": { "type": "text", "analyzer": "english-lenient" , "index_options": "offsets" },
+          "text_hani": { "type": "text", "analyzer": "tsconvert" , "index_options": "offsets" },
+          "text_bo": { 
+            "type": "text",
+            "analyzer": "tibetan-lenient",
+            "index_options": "offsets",
+            "fields": {
+              "exact": {
+                "type": "text",
+                "analyzer": "tibetan-exact",
+                "index_options": "offsets"
+              }
+            }
+          }
+        }
+      },
+      "etext_pages": {
+        "type": "nested",
+        "properties": {
+          "cstart": { "type": "integer" },
+          "cend": { "type": "integer" },
+          "pnum": { "type": "short" },
+          "pname": { "type": "keyword" }
+        }
+      },
+      "etext_spans": {
+        "type": "nested",
+        "properties": {
+          "cstart": { "type": "integer" },
+          "cend": { "type": "integer" },
+          "rend": { "type": "keyword" }
+        }
+      }
+    }
+  },
+  "settings": {
+    "index": {
+      "max_inner_result_window": 10000,
+      "similarity": {
+        "default": {
+          "type": "BM25",
+          "k1": 0.0
+        }
+      }
+    },
+    "analysis": {
+      "normalizer": {
+        "id_normalizer": {
+          "type": "custom",
+          "char_filter": [],
+          "filter": [ "lowercase" ]
+        }
+      },
+      "analyzer": {
+        "tibetan-lenient": {
+          "tokenizer": "tibetan-default",
+          "filter": [ "tibetan-lenient", "tibetan-synonyms", "tibetan_stop_words_filter" ],
+          "char_filter": [ "tibetan-lenient" ]
+        },
+        "tibetan-ewts-lenient": {
+          "tokenizer": "tibetan-default",
+          "filter": [ "tibetan-lenient", "tibetan-synonyms", "tibetan_stop_words_filter" ],
+          "char_filter": [ "tibetan-ewts-lenient" ]
+        },
+        "tibetan-exact": {
+          "tokenizer": "tibetan-exact",
+          "char_filter": [ "tibetan-exact" ]
+        },
+        "tibetan-ewts-exact": {
+          "tokenizer": "tibetan-exact",
+          "char_filter": [ "tibetan-ewts-exact" ]
+        },
+        "tsconvert" : {
+          "tokenizer" : "tsconvert"
+        },
+        "english-lenient": {
+          "tokenizer": "standard",
+          "filter": [ "asciifolding", "lowercase", "stop", "english-possessive", "english-synonyms", "english-stemmer" ],
+          "char_filter": [ "tibetan-simple-diacritics" ]
+        },
+        "iast-lenient": {
+          "tokenizer": "iast",
+          "char_filter": [ "iast-lenient" ]
+        },
+        "mymr-lenient": {
+          "tokenizer": "icu_tokenizer",
+          "char_filter": [ "mymr-lenient" ]
+        },
+        "khmr-lenient": {
+          "tokenizer": "khmr",
+          "char_filter": [ "khmr-lenient" ],
+          "filter": [ "khmr" ]
+        },
+        "tibetan-phonetic": {
+          "tokenizer": "tibetan-default",
+          "filter": [ "tibetan-lenient", "tibetan-for-tibetan-phonetic" ],
+          "char_filter": [ "tibetan-lenient" ]
+        },
+        "tibetan-for-english-phonetic": {
+          "tokenizer": "tibetan-default",
+          "filter": [ "tibetan-for-english-phonetic" ],
+          "char_filter": [ "tibetan-lenient" ]
+        },
+        "ewts-phonetic": {
+          "tokenizer": "tibetan-default",
+          "filter": [ "tibetan-lenient", "tibetan-for-tibetan-phonetic" ],
+          "char_filter": [ "tibetan-ewts-lenient" ]
+        },
+        "ewts-for-english-phonetic": {
+          "tokenizer": "tibetan-default",
+          "filter": [ "tibetan-for-english-phonetic" ],
+          "char_filter": [ "tibetan-ewts-lenient" ]
+        },
+        "tibetan-english-phonetic": {
+          "tokenizer": "tibetan-english-phonetic",
+          "char_filter": [ "tibetan-english-phonetic" ]
+        }
+      },
+      "filter": {
+        "shingle_2_3": {
+          "type": "shingle",
+          "min_shingle_size": 2,
+          "max_shingle_size": 3
+        },
+        "tibetan-lenient": {
+          "type": "tibetan",
+          "remove_affixes": true,
+          "normalize_paba": true
+        },
+        "tibetan_stop_words_filter": {
+          "type": "stop",
+          "ignore_case": false,
+          "stopwords": [ "འི", "འིས", "ཡིས" ]
+        },
+        "tibetan-synonyms": {
+          "type": "synonym_graph",
+          "synonyms_path": "tibetan-synonyms.txt"
+        },
+        "tibetan-for-english-phonetic": {
+          "type": "tibetan-for-english-phonetic"
+        },
+        "tibetan-for-tibetan-phonetic": {
+          "type": "tibetan-for-tibetan-phonetic"
+        },
+        "english-synonyms": {
+          "type": "synonym_graph",
+          "synonyms_path": "english-synonyms.txt"
+        },
+        "english-stemmer": {
+          "type": "stemmer",
+          "language": "english"
+        },
+        "english-possessive": {
+          "type": "stemmer",
+          "language": "possessive_english"
+        },
+        "khmr": {
+          "type": "khmr"
+        }
+      },
+      "char_filter": {
+        "tibetan-lenient": {
+          "type": "tibetan",
+          "lenient": true
+        },
+        "tibetan-ewts-lenient": {
+          "type": "tibetan",
+          "lenient": true,
+          "input_method": "ewts"
+        },
+        "tibetan-exact": {
+          "type": "tibetan",
+          "lenient": false,
+          "keep_shad": true
+        },
+        "tibetan-ewts-exact": {
+          "type": "tibetan",
+          "lenient": false,
+          "input_method": "ewts",
+          "keep_shad": true
+        },
+        "tibetan-english-phonetic": {
+          "type": "tibetan-english-phonetic"
+        },
+        "iast-lenient": {
+          "type": "iast",
+          "lenient": true,
+          "normalize_anusvara": true,
+          "filter_geminates": true,
+          "input_method": "roman"
+        },
+        "khmr-lenient": {
+          "type": "khmr",
+          "lenient_level": 3
+        },
+        "mymr-lenient": {
+          "type": "mymr",
+          "lenient": true
+        }
+      },
+      "tokenizer" : {
+        "tsconvert" : {
+          "type" : "stconvert",
+          "keep_both" : false,
+          "convert_type" : "t2s"
+        },
+        "tibetan-default" : {
+          "type" : "tibetan",
+          "split_non_standard" : true,
+          "keep_shad" : false
+        },
+        "tibetan-exact" : {
+          "type" : "tibetan",
+          "split_non_standard" : false,
+          "keep_shad" : true
+        }
+      }
+    }
+  }
+}
